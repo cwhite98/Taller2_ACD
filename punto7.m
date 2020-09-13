@@ -19,6 +19,7 @@ for i=1:10:50
     imshow(uint8(X));
 end
 
-% Conclusion: se puede decir que usando los 50 primeros valores 
-% singulares se consigue una foto con un corte optimo, ya que se 
-% puede apreciar mas detalles de la foto.
+% Conclusion: Con los primeros 20 valores singulares se puede llegar a 
+% distinguir a la persona de la foto, pero se puede decir que usando los
+% 50 primeros valores singulares se consigue una foto con un corte optimo,
+% ya que se puede apreciar mas detalles de la foto.
