@@ -8,7 +8,7 @@ A_cov = cov(A);
 A_barra = A - ((1/filas) * ones(filas) * ones(filas)' * A);
 mediana = median(A);
 P = eye(filas) - (ones(filas) * ones(filas)' / filas);
-A_centrado = A * P;
+A_centrado = P * A;
 
 %% descomposicion valores singulares de A
 [U, S, V] = svd(A);
