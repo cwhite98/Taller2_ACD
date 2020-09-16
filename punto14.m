@@ -1,12 +1,12 @@
-datos1 = mvnrnd(zeros([15,1]), hilb(15), 1000);
+datos1 = mvnrnd(zeros([11,1]), hilb(11), 1000);
 
-medias = zeros([15,1]);
+medias = zeros([11,1]);
  
 
 for j=0:25
-    medias(randi([1 15])) = j;
+    medias(randi([1 11])) = j;
 
-    datos2 = mvnrnd(medias, hilb(15), 100);
+    datos2 = mvnrnd(medias, hilb(11), 100);
     datos = [ datos1
                datos2 ]; 
 
@@ -32,15 +32,15 @@ for j=0:25
     DLW(j+1) = norm(autoVec0LW-autovectoresCLW, 'fro');
     
     % para Kurmain
-     %[dx,dm,media,Cov,vkur,ndir] = kur_main(datos);
-     %[vectCKur, valsCKur] = eig(Cov);
+     [dx,dm,media,Cov,vkur,ndir] = kur_main(datos);
+     [vectCKur, valsCKur] = eig(Cov);
  
-     %if j ==0
-         %autoVec0Kur = vectCKur;
-     %end
+     if j ==0
+         autoVec0Kur = vectCKur;
+     end
 
-    autovectoresCKur= vectCKur;
-    DKur(j+1) = norm(autoVec0Kur-autovectoresCKur, 'fro');
+     autovectoresCKur= vectCKur;
+     DKur(j+1) = norm(autoVec0Kur-autovectoresCKur, 'fro');
     
     %para Kendall
     
@@ -77,11 +77,11 @@ end
 figure; hold on
 a1 = plot(0:25,DHabitual,"r");m1 = "Habitual";
 a2 = plot(0:25,DLW,"b"); m2 = "Ledoit Wolf";
-%a3 = plot(0:25,DKur,"b"); m3 = "Kur Main";
+a3 = plot(0:25,DKur,"m"); m3 = "Kur Main";
 a4 = plot(0:25,DKendall,"g"); m4 = "Kendall";
 a5 = plot(0:25,DSpearman,"k"); m5 = "Spearman";
 
-legend([a1;a2;a4;a5],m1,m2,m4,m5)
+legend([a1;a2;a3;a4;a5],m1,m2,m3,m4,m5)
 
 
 
