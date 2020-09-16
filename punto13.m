@@ -6,6 +6,9 @@ A = B * B';
 x = (1:500)';
 b = A * x;
 
+condi = cond(A);
+dete = det(A);
+
 x_inv = inv(A) * b;
 x_p = A\b;
 x_pinv = pinv(A) * b;
@@ -15,6 +18,8 @@ x_lu = dA_lu\b;
 
 dA_qr = decomposition(A,'qr');
 x_qr = dA_qr\b;
+
+[auto_vector_A, auto_valor_A] = eig(A);
 
 %dA_chol = decomposition(A,'chol');
 %x_chol = dA_chol\b;
