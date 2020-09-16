@@ -23,4 +23,3 @@ premulti = A_pinv * y;
 
 %% modelo de regresión
 mdl = fitlm(A, y, 'linear')
-fitlm()
