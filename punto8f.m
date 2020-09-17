@@ -6,16 +6,16 @@ A = datarray(1:100, 2: end);
 A_cov = cov(A);
 [filas, col] = size(A);
 A_barra = A - ((1/filas) * ones(filas) * ones(filas)' * A);
-mediana = median(A);
+
 P = eye(filas) - (ones(filas) * ones(filas)' / filas);
 A_centrado = P * A;
 
 %% descomposicion valores singulares de A
-[U, S, V] = svd(A);
+[U, S, V] = svd(A_cov);
 
 %% descomposicion espectral de A_barra
-[auto_vector_A_barra, auto_valor_A_barra] = eig(A_barra);
-des_espectral = auto_vector_A_barra * auto_valor_A_barra * auto_vector_A_barra';
+[auto_vector, auto_valor] = eig(A_cov);
+des_espectral = auto_vector * auto_valor * auto_vector';
 
 %% norma matriz
 norma = norm(A, 2)
