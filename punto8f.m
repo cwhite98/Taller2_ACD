@@ -9,12 +9,13 @@ A_barra = A - ((1/filas) * ones(filas) * ones(filas)' * A);
 
 P = eye(filas) - (ones(filas) * ones(filas)' / filas);
 A_centrado = P * A;
+A_cov_centrado = cov(A_centrado);
 
 %% descomposicion valores singulares de A
 [U, S, V] = svd(A_cov);
 
 %% descomposicion espectral de A_barra
-[auto_vector, auto_valor] = eig(A_cov);
+[auto_vector, auto_valor] = eig(A_cov_centrado);
 des_espectral = auto_vector * auto_valor * auto_vector';
 
 %% norma matriz
